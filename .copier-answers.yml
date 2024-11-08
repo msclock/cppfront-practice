@@ -1,0 +1,25 @@
+_commit: v1.6.10
+_src_path: gh:serious-scaffold/ss-cpp
+author_email: msclock@qq.com
+author_name: msclock
+codecov_notify_builds: 1
+codecov_threshold: 5%
+compile_target: ''
+copyright_holder: msclock
+copyright_license: MIT License
+copyright_year: '2024'
+create_devcontainer: true
+docs_type: mkdocs
+exe_target: exe
+header_target: ''
+organization_name: msclock
+project_description: Practice based on cppfront
+project_name: Test on cppfront
+repo_name: cppfront-practice
+repo_namespace: msclock
+repo_platform: github
+use_cdash: false
+use_codecov: true
+use_codeql: true
+use_conan: false
+use_cpm: false
