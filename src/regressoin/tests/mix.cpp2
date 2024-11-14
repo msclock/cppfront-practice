@@ -1,0 +1,15 @@
+#include "gtest/gtest.h"
+#include <vector>
+
+N: namespace = {                                        // Cpp2
+    hello: (msg: std::string_view) = {                    // Cpp2
+        std::cout << "Hello, (msg)$!\n";                // Cpp2
+    }
+}
+
+TEST(regression, std) {
+    auto words = std::vector{ "Alice", "Bob" }; // Cpp1
+    N::hello( words[0] );                       // Cpp1
+    N::hello( words[1] );                       // Cpp1
+    std::cout << "... and goodnight\n";         // Cpp1
+}
