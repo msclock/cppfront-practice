@@ -252,7 +252,7 @@ jobs:
 
       - if: failure()
         run: |
-          cat D:/a/cppfront-practice/cppfront-practice/out/build/default/vcpkg_installed/vcpkg/blds/cppfront/x64-windows-dbg
+          cat D:/a/cppfront-practice/cppfront-practice/out/build/default/vcpkg_installed/vcpkg/blds/cppfront/install-x64-windows-dbg-out.log
 
       - name: Build
         run: cmake --build --preset=default --target all
