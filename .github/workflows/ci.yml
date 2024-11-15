@@ -248,6 +248,10 @@ jobs:
           -DCODE_COVERAGE=ON
           -DBUILD_TESTING=ON
 
+      - if: failure()
+        run: |
+          cat D:/a/cppfront-practice/cppfront-practice/out/build/default/vcpkg_installed/vcpkg/blds/cppfront/x64-windows-dbg
+
       - name: Build
         run: cmake --build --preset=default --target all
 
@@ -540,6 +544,10 @@ jobs:
           -DUSE_CPPCHECK=ON
           -DUSE_CPPCHECK_WARNINGS_AS_ERRORS=ON
           -DBUILD_TESTING=ON
+
+      - if: failure()
+        run: |
+          cat /usr/local/share/vcpkg/buildtrees/cppfront/x64-osx-dbg
 
       - name: Build
         run: cmake --build --preset=default --target all
