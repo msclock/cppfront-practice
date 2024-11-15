@@ -183,7 +183,7 @@ jobs:
           ${{ contains(matrix.compiler, 'gcc') && '-DCODE_COVERAGE_GCOV=${GCOV}' }}
       - if: failure()
         run: |
-          cat /usr/local/share/vcpkg/buildtrees/cppfront/x64-osx-dbg
+          cat /usr/local/share/vcpkg/buildtrees/cppfront/install-x64-osx-dbg-out.log
       - name: Build
         run: cmake --build --preset=default --target all
 
@@ -546,10 +546,6 @@ jobs:
           -DUSE_CPPCHECK=ON
           -DUSE_CPPCHECK_WARNINGS_AS_ERRORS=ON
           -DBUILD_TESTING=ON
-
-      - if: failure()
-        run: |
-          cat /usr/local/share/vcpkg/buildtrees/cppfront/x64-osx-dbg
 
       - name: Build
         run: cmake --build --preset=default --target all

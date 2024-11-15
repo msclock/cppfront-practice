@@ -35,10 +35,6 @@ target_sources(
             include/cpp2util.h
             include/cpp2regex.h)
 
-# Enable cpp2 autodetection for add_subdirectory users
-get_directory_property(_CPPFRONT_MAGIC_DIR PARENT_DIRECTORY)
-include(CppfrontHelpers.cmake)
-
 # Installation and CMake packaging logic
 
 include(CMakePackageConfigHelpers)
