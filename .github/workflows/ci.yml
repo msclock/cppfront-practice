@@ -181,7 +181,9 @@ jobs:
           -DCODE_COVERAGE=ON
           -DBUILD_TESTING=ON
           ${{ contains(matrix.compiler, 'gcc') && '-DCODE_COVERAGE_GCOV=${GCOV}' }}
-
+      - if: failure()
+        run: |
+          cat /usr/local/share/vcpkg/buildtrees/cppfront/x64-osx-dbg
       - name: Build
         run: cmake --build --preset=default --target all
 
