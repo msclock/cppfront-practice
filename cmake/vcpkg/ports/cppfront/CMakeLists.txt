@@ -1,11 +1,15 @@
 cmake_minimum_required(VERSION 3.30)
 project(cppfront LANGUAGES CXX)
 
+set(CMAKE_CXX_STANDARD
+    20
+    CACHE STRING "C++ standard")
+
 add_executable(cppfront source/cppfront.cpp)
 add_executable(cppfront::cppfront ALIAS cppfront)
 set_target_properties(cppfront PROPERTIES OUTPUT_NAME cppfront EXPORT_NAME
                                                                cppfront)
-target_compile_features(cppfront PRIVATE cxx_std_20)
+# target_compile_features(cppfront PRIVATE cxx_std_20)
 target_compile_options(cppfront PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/bigobj>)
 if(WIN32 AND MINGW)
   target_compile_options(cppfront PRIVATE -Wa,-mbig-obj)
