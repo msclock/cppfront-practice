@@ -6,7 +6,10 @@ add_executable(cppfront::cppfront ALIAS cppfront)
 set_target_properties(cppfront PROPERTIES OUTPUT_NAME cppfront EXPORT_NAME
                                                                cppfront)
 target_compile_features(cppfront PRIVATE cxx_std_20)
-target_compile_options(cppfront PRIVATE $<$<PLATFORM_ID:Windows>:/bigobj>)
+target_compile_options(cppfront PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/bigobj>)
+if(WIN32 AND MINGW)
+  target_compile_options(cppfront PRIVATE -mbig-obj)
+endif()
 target_sources(
   cppfront
   PRIVATE FILE_SET
