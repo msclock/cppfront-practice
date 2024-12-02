@@ -23,7 +23,10 @@ function(_vcpkg_checkout vcpkg_root vcpkg_ref)
   message(STATUS "vcpkg checkout to ${vcpkg_ref}")
 
   if(EXISTS "${vcpkg_root}/.git/shallow")
-    message(WARNING "vcpkg is shallow, unshallowing...")
+    message(
+      WARNING
+        "vcpkg is shallow now and unshallow to retrieve the Git tree object hash for a specific version port......"
+    )
     execute_process(
       COMMAND ${GIT_EXECUTABLE} fetch --unshallow
       WORKING_DIRECTORY ${vcpkg_root}
@@ -78,7 +81,24 @@ function(_vcpkg_tool_bootstrap vcpkg_root)
     RESULT_VARIABLE result)
 
   if(NOT result EQUAL "0")
-    message(FATAL_ERROR "${bootstrap_cmd} failed with ${result}")
+    if(CMAKE_HOST_UNIX)
+      message(STATUS "Retry to build vcpkg from source...")
+      set(bootstrap_impl "${vcpkg_root}/scripts/bootstrap.sh")
+      file(READ "${bootstrap_impl}" file_contents)
+      string(REPLACE [[elif [ "$ARCH" = "x86_64" ]; then]]
+                     [[elif [ "$ARCH" = "" ]; then]] file_contents
+                     "${file_contents}")
+      file(WRITE "${bootstrap_impl}" "${file_contents}")
+
+      execute_process(
+        COMMAND ${bootstrap_cmd} -disableMetrics
+        WORKING_DIRECTORY ${vcpkg_root}
+        RESULT_VARIABLE result)
+    endif()
+
+    if(NOT result EQUAL "0")
+      message(FATAL_ERROR "${bootstrap_cmd} failed with ${result}")
+    endif()
   endif()
 endfunction()
 
@@ -109,7 +129,7 @@ function(_vcpkg_upgrade vcpkg_root vcpkg_repo vcpkg_ref)
 
   message(STATUS "Upgrade vcpkg")
   message(STATUS "vcpkg current commit: ${current_git_hash}")
-  message(STATUS "vcpkg release:        ${vcpkg_ref}")
+  message(STATUS "vcpkg target commit:  ${vcpkg_ref}")
 
   execute_process(
     COMMAND ${GIT_EXECUTABLE} remote set-url origin ${vcpkg_repo}
@@ -136,9 +156,7 @@ endfunction()
 
 # find root
 function(_vcpkg_find_root cache_dir_name out_vcpkg_root)
-  if(DEFINED ENV{VCPKG_ROOT} AND NOT "$ENV{VCPKG_ROOT}" STREQUAL "")
-    set(root "$ENV{VCPKG_ROOT}")
-  elseif("${__vcpkg_bootstrap_host}" STREQUAL "Windows")
+  if("${__vcpkg_bootstrap_host}" STREQUAL "Windows")
     set(root "$ENV{LOCALAPPDATA}/vcpkg/projects/${cache_dir_name}/cache")
   else()
     set(root "$ENV{HOME}/.cache/vcpkg/projects/${cache_dir_name}")
