@@ -5,6 +5,9 @@
     "helpers:pinGitHubActionDigests",
     ":enablePreCommit"
   ],
+  "constraints": {
+    "python": "==3.12"
+  },
   "automergeType": "pr",
   "automergeStrategy": "merge-commit",
   "platformAutomerge": true,
