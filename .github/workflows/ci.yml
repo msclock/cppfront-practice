@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
   pre-commit:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
@@ -34,7 +34,7 @@ jobs:
 
 
   check-on-linux:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: [pre-commit]
     timeout-minutes: 15
     strategy:
@@ -335,7 +335,7 @@ jobs:
         run: cmake --build --preset=default --target ccov-all
 
   check-sanitizers:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: [pre-commit]
     timeout-minutes: 15
     strategy:
@@ -385,7 +385,7 @@ jobs:
         run: ctest --preset=default
 
   check-valgrind:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: [pre-commit]
     timeout-minutes: 15
     strategy:
@@ -453,7 +453,7 @@ jobs:
           path: out/valgrind-results.tar.gz
 
   clang-tidy:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: [pre-commit]
     timeout-minutes: 15
 
@@ -502,7 +502,7 @@ jobs:
 
 
   cppcheck:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: [pre-commit]
     timeout-minutes: 15
 
@@ -551,7 +551,7 @@ jobs:
 
 
   check-docs:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: [pre-commit]
     timeout-minutes: 15
 
@@ -597,7 +597,7 @@ jobs:
 
 
   codecov:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: [pre-commit]
     timeout-minutes: 15
 
@@ -667,7 +667,7 @@ jobs:
       - clang-tidy
       - cppcheck
       - codecov
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 2
     permissions:
       pull-requests: write
