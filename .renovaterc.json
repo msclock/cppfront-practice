@@ -11,8 +11,6 @@
   "platformAutomerge": true,
   "packageRules": [
     {
-<<<<<<< before updating
-=======
       "automerge": true,
       "addLabels": [
         "auto-approval"
@@ -21,18 +19,12 @@
         "schedule:earlyMondays",
         "schedule:automergeMonthly"
       ],
->>>>>>> after updating
       "matchUpdateTypes": [
         "minor",
         "patch",
         "pin",
         "digest"
-<<<<<<< before updating
-      ],
-      "automerge": true
-=======
       ]
->>>>>>> after updating
     },
     {
       "description": "Group renovate docker tag and pre-commit-hooks tag",
