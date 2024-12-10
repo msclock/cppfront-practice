@@ -112,7 +112,6 @@ jobs:
 
 
   check-on-macos:
-    if: false
     runs-on: macos-14
     needs: [pre-commit]
     timeout-minutes: 30
