@@ -22,6 +22,13 @@ Practice based on cppfront
 
 <!-- writes more things here -->
 
+## Cpp2
+
+- Repository: <https://github.com/hsutter/cppfron>
+- Documentation: <https://hsutter.github.io/cppfront>
+
+<!-- https://github.com/ntrel/cpp2 -->
+
 ## License
 
 MIT License, for more details, see the [LICENSE](https://github.com/msclock/cppfront-practice/blob/master/LICENSE) file.

@@ -1,5 +1,12 @@
+std: namespace = {
+    println: (args...) = {
+        (std::cout << ... << args) << "\n";
+    }
+}
+
 hello: (msg: std::string_view) = {
     std::cout << "Hello, (msg)$!\n";
+    std::println(msg);
 }
 
 main: () = {
