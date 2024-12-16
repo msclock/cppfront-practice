@@ -307,7 +307,7 @@ jobs:
 
       - name: Prepare for gcovr
         run: |
-          pip install gcovr==7.2
+          pip install gcovr==8.2
 
       - name: Configure CMake
         run: >
@@ -646,12 +646,16 @@ jobs:
         run: cmake --build --preset=default --target ccov-all
 
       - name: Upload coverage report
+<<<<<<< before updating
         uses: codecov/codecov-action@b9fd7d16f6d7d1b5d2bec1a2887e65ceed900238 # v4.6.0
+=======
+        uses: codecov/codecov-action@7f8b4b4bde536c465e797be725718b88c5d95e0e # v5.1.1
+>>>>>>> after updating
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
           disable_search: true
-          file: ./out/build/default/code_coverage/coverage.info
+          files: ./out/build/default/code_coverage/coverage.info
           verbose: true
 
 

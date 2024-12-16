@@ -95,7 +95,11 @@ repos:
 
   # Check for renovate config
   - repo: https://github.com/renovatebot/pre-commit-hooks
+<<<<<<< before updating
     rev: 39.57.4
+=======
+    rev: 39.59.0
+>>>>>>> after updating
     hooks:
       - id: renovate-config-validator
         stages: [manual]
