@@ -36,9 +36,8 @@ jobs:
   check-on-linux:
     runs-on: ubuntu-24.04
     needs: [pre-commit]
-    timeout-minutes: 15
+
     strategy:
-      fail-fast: false
       matrix:
         triplet: [x64-linux]
         compiler: [gcc-13, llvm-17]
@@ -115,9 +114,12 @@ jobs:
     if: false
     runs-on: macos-14
     needs: [pre-commit]
+<<<<<<< before updating
     timeout-minutes: 30
+=======
+
+>>>>>>> after updating
     strategy:
-      fail-fast: false
       matrix:
         triplet: [arm64-osx]
         compiler: [gcc@13, llvm@17]
@@ -201,9 +203,8 @@ jobs:
   check-on-windows:
     runs-on: windows-2022
     needs: [pre-commit]
-    timeout-minutes: 15
+
     strategy:
-      fail-fast: false
       matrix:
         triplet: [x64-windows]
         compiler: [msvc-2022, llvm-17]
@@ -267,9 +268,8 @@ jobs:
   check-mingw:
     runs-on: windows-2022
     needs: [pre-commit]
-    timeout-minutes: 15
+
     strategy:
-      fail-fast: false
       matrix:
         triplet: [x64-mingw-dynamic]
         compiler: [mingw]
@@ -307,7 +307,7 @@ jobs:
 
       - name: Prepare for gcovr
         run: |
-          pip install gcovr==7.2
+          pip install gcovr==8.2
 
       - name: Configure CMake
         run: >
@@ -337,9 +337,8 @@ jobs:
   check-sanitizers:
     runs-on: ubuntu-24.04
     needs: [pre-commit]
-    timeout-minutes: 15
+
     strategy:
-      fail-fast: false
       matrix:
         sanitizer:
           - address,undefined
@@ -387,9 +386,8 @@ jobs:
   check-valgrind:
     runs-on: ubuntu-24.04
     needs: [pre-commit]
-    timeout-minutes: 15
+
     strategy:
-      fail-fast: false
       matrix:
         build_type: [Debug, RelWithDebInfo]
 
@@ -447,7 +445,11 @@ jobs:
 
       - name: Upload test results
         if: failure()
+<<<<<<< before updating
         uses: actions/upload-artifact@6f51ac03b9356f520e9adb1b1b7802705f340c2b # v4
+=======
+        uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4
+>>>>>>> after updating
         with:
           name: valgrind-results
           path: out/valgrind-results.tar.gz
@@ -455,7 +457,6 @@ jobs:
   clang-tidy:
     runs-on: ubuntu-24.04
     needs: [pre-commit]
-    timeout-minutes: 15
 
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
@@ -504,7 +505,6 @@ jobs:
   cppcheck:
     runs-on: ubuntu-24.04
     needs: [pre-commit]
-    timeout-minutes: 15
 
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
@@ -553,7 +553,6 @@ jobs:
   check-docs:
     runs-on: ubuntu-24.04
     needs: [pre-commit]
-    timeout-minutes: 15
 
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
@@ -599,7 +598,6 @@ jobs:
   codecov:
     runs-on: ubuntu-24.04
     needs: [pre-commit]
-    timeout-minutes: 15
 
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
@@ -646,12 +644,16 @@ jobs:
         run: cmake --build --preset=default --target ccov-all
 
       - name: Upload coverage report
+<<<<<<< before updating
         uses: codecov/codecov-action@b9fd7d16f6d7d1b5d2bec1a2887e65ceed900238 # v4.6.0
+=======
+        uses: codecov/codecov-action@7f8b4b4bde536c465e797be725718b88c5d95e0e # v5.1.1
+>>>>>>> after updating
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
           disable_search: true
-          file: ./out/build/default/code_coverage/coverage.info
+          files: ./out/build/default/code_coverage/coverage.info
           verbose: true
 
 
