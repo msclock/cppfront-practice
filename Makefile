@@ -26,7 +26,11 @@ clean:
 # Install standalone tools
 prerequisites:
 	pipx install --force pre-commit==4.0.1
+<<<<<<< before updating
 	pipx install --force watchfiles==1.0.0
+=======
+	pipx install --force watchfiles==1.0.3
+>>>>>>> after updating
 
 ########################################################################################
 # Lint
