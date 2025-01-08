@@ -82,7 +82,7 @@ repos:
 
   # Clang format the codebase automatically
   - repo: https://github.com/pre-commit/mirrors-clang-format
-    rev: v19.1.4
+    rev: v19.1.6
     hooks:
       - id: clang-format
         types_or: [c++, c, cuda]
@@ -95,7 +95,11 @@ repos:
 
   # Check for renovate config
   - repo: https://github.com/renovatebot/pre-commit-hooks
+<<<<<<< before updating
     rev: 39.57.4
+=======
+    rev: 39.91.3
+>>>>>>> after updating
     hooks:
       - id: renovate-config-validator
         stages: [manual]
