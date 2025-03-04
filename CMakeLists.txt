@@ -8,6 +8,7 @@ project(
   HOMEPAGE_URL "https://github.com/msclock/cppfront-practice"
   DESCRIPTION "Practice based on cppfront")
 
+<<<<<<< before updating
 set(CMAKE_CXX_STANDARD
     23
     CACHE STRING "C++ standard")
@@ -22,14 +23,13 @@ set(CMAKE_CXX_EXTENSIONS
 include_directories(${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/include)
 
 # From https://github.com/msclock/cmake-registry.
+=======
+# Project default module
+>>>>>>> after updating
 find_package(cmake-modules REQUIRED)
 include(cmake-modules/ProjectDefault)
-
-# Project custom modules
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
-include(ConfigureWarningsAndHardening)
 include(ConfigureVersion)
-include(ConfigureDocs)
 include(ConfigureCoverage)
+include(ConfigureDocs)
 
 add_subdirectory(src)

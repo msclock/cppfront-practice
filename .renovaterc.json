@@ -15,9 +15,11 @@
       "addLabels": [
         "auto-approval"
       ],
-      "extends": [
-        "schedule:earlyMondays",
-        "schedule:automergeMonthly"
+      "schedule": [
+        "* 0-3 1-7 * *"
+      ],
+      "automergeSchedule": [
+        "* 0-3 1-7 * *"
       ],
       "matchUpdateTypes": [
         "minor",
