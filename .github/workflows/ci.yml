@@ -24,7 +24,11 @@ jobs:
         with:
           fetch-depth: 0
 
+<<<<<<< before updating
       - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5
+=======
+      - uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5
+>>>>>>> after updating
         with:
           python-version: 3.11
 
@@ -36,12 +40,11 @@ jobs:
   check-on-linux:
     runs-on: ubuntu-24.04
     needs: [pre-commit]
-    timeout-minutes: 15
+
     strategy:
-      fail-fast: false
       matrix:
         triplet: [x64-linux]
-        compiler: [gcc-13, llvm-17]
+        compiler: [gcc-14, llvm-18]
         std: [20]
         build_type: [Debug, RelWithDebInfo]
 
@@ -53,7 +56,11 @@ jobs:
           fetch-depth: 0
 
       - name: Cache
+<<<<<<< before updating
         uses: actions/cache@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4
+=======
+        uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf # v4
+>>>>>>> after updating
         with:
           path: |
             ~/vcpkg
@@ -115,13 +122,21 @@ jobs:
     if: false
     runs-on: macos-14
     needs: [pre-commit]
+<<<<<<< before updating
     timeout-minutes: 30
+=======
+
+>>>>>>> after updating
     strategy:
-      fail-fast: false
       matrix:
         triplet: [arm64-osx]
+<<<<<<< before updating
         compiler: [gcc@13, llvm@17]
         std: [23]
+=======
+        compiler: [gcc@14, llvm@18]
+        std: [20]
+>>>>>>> after updating
         build_type: [Debug, RelWithDebInfo]
 
     name: check • ${{ matrix.triplet }} • ${{ matrix.compiler }} • c++${{ matrix.std }} • ${{ matrix.build_type }}
@@ -132,7 +147,11 @@ jobs:
           fetch-depth: 0
 
       - name: Cache
+<<<<<<< before updating
         uses: actions/cache@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4
+=======
+        uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf # v4
+>>>>>>> after updating
         with:
           path: |
             ~/vcpkg
@@ -142,7 +161,11 @@ jobs:
 
       - name: Install compilers and tools
         run: |
+<<<<<<< before updating
           brew install ${{ matrix.compiler }} ninja ccache
+=======
+          brew install ${{ matrix.compiler }} cmake ninja ccache lcov
+>>>>>>> after updating
 
       - name: Prepare PATH for compilers
         run: echo "PATH=/usr/local/opt/${{ matrix.compiler }}/bin:$PATH" >> $GITHUB_ENV
@@ -161,13 +184,6 @@ jobs:
           compiler=${{ matrix.compiler }}
           gcov_version=${compiler##*@}
           echo "GCOV=$(which gcov-$gcov_version)" >> $GITHUB_ENV
-
-      - name: Prepare for lcov
-        if: contains(matrix.compiler, 'gcc')
-        run: |
-          curl -o /tmp/lcov.rb https://raw.githubusercontent.com/Homebrew/homebrew-core/e92d2ae54954ebf485b484d8522104700b144fee/Formula/lcov.rb
-          HOMEBREW_NO_AUTO_UPDATE=1 brew install --formula /tmp/lcov.rb
-          brew pin lcov
 
       - name: Configure CMake
         run: >
@@ -201,12 +217,11 @@ jobs:
   check-on-windows:
     runs-on: windows-2022
     needs: [pre-commit]
-    timeout-minutes: 15
+
     strategy:
-      fail-fast: false
       matrix:
         triplet: [x64-windows]
-        compiler: [msvc-2022, llvm-17]
+        compiler: [msvc-2022, llvm-18]
         std: [20]
         build_type: [Debug, RelWithDebInfo]
 
@@ -218,7 +233,11 @@ jobs:
           fetch-depth: 0
 
       - name: Cache
+<<<<<<< before updating
         uses: actions/cache@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4
+=======
+        uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf # v4
+>>>>>>> after updating
         with:
           path: |
             ~/vcpkg
@@ -267,9 +286,8 @@ jobs:
   check-mingw:
     runs-on: windows-2022
     needs: [pre-commit]
-    timeout-minutes: 15
+
     strategy:
-      fail-fast: false
       matrix:
         triplet: [x64-mingw-dynamic]
         compiler: [mingw]
@@ -284,7 +302,11 @@ jobs:
           fetch-depth: 0
 
       - name: Cache
+<<<<<<< before updating
         uses: actions/cache@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4
+=======
+        uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf # v4
+>>>>>>> after updating
         with:
           path: |
             ~/vcpkg
@@ -301,13 +323,17 @@ jobs:
           ninja: true
           ccache: true
 
+<<<<<<< before updating
       - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5
+=======
+      - uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5
+>>>>>>> after updating
         with:
           python-version: 3.x
 
       - name: Prepare for gcovr
         run: |
-          pip install gcovr==7.2
+          pip install gcovr==8.3
 
       - name: Configure CMake
         run: >
@@ -337,9 +363,8 @@ jobs:
   check-sanitizers:
     runs-on: ubuntu-24.04
     needs: [pre-commit]
-    timeout-minutes: 15
+
     strategy:
-      fail-fast: false
       matrix:
         sanitizer:
           - address,undefined
@@ -353,17 +378,21 @@ jobs:
           fetch-depth: 0
 
       - name: Cache
+<<<<<<< before updating
         uses: actions/cache@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4
+=======
+        uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf # v4
+>>>>>>> after updating
         with:
           path: |
             ~/vcpkg
             ~/.cache/vcpkg
-          key: x64-linux-gcc-13-${{ hashFiles('vcpkg.json') }}
-          restore-keys: x64-linux-gcc-13-${{ hashFiles('vcpkg.json') }}
+          key: x64-linux-gcc-14-${{ hashFiles('vcpkg.json') }}
+          restore-keys: x64-linux-gcc-14-${{ hashFiles('vcpkg.json') }}
 
       - uses: aminya/setup-cpp@v1
         with:
-          compiler: gcc-13
+          compiler: gcc-14
           cmake: true
           ninja: true
           ccache: true
@@ -387,9 +416,8 @@ jobs:
   check-valgrind:
     runs-on: ubuntu-24.04
     needs: [pre-commit]
-    timeout-minutes: 15
+
     strategy:
-      fail-fast: false
       matrix:
         build_type: [Debug, RelWithDebInfo]
 
@@ -401,17 +429,21 @@ jobs:
           fetch-depth: 0
 
       - name: Cache
+<<<<<<< before updating
         uses: actions/cache@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4
+=======
+        uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf # v4
+>>>>>>> after updating
         with:
           path: |
             ~/vcpkg
             ~/.cache/vcpkg
-          key: x64-linux-gcc-13-${{ hashFiles('vcpkg.json') }}
-          restore-keys: x64-linux-gcc-13-${{ hashFiles('vcpkg.json') }}
+          key: x64-linux-gcc-14-${{ hashFiles('vcpkg.json') }}
+          restore-keys: x64-linux-gcc-14-${{ hashFiles('vcpkg.json') }}
 
       - uses: aminya/setup-cpp@v1
         with:
-          compiler: gcc-13
+          compiler: gcc-14
           cmake: true
           ninja: true
           ccache: true
@@ -447,7 +479,11 @@ jobs:
 
       - name: Upload test results
         if: failure()
+<<<<<<< before updating
         uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08 # v4
+=======
+        uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # v4
+>>>>>>> after updating
         with:
           name: valgrind-results
           path: out/valgrind-results.tar.gz
@@ -455,7 +491,6 @@ jobs:
   clang-tidy:
     runs-on: ubuntu-24.04
     needs: [pre-commit]
-    timeout-minutes: 15
 
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
@@ -463,28 +498,36 @@ jobs:
           fetch-depth: 0
 
       - name: Cache
+<<<<<<< before updating
         uses: actions/cache@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4
+=======
+        uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf # v4
+>>>>>>> after updating
         with:
           path: |
             ~/vcpkg
             ~/.cache/vcpkg
-          key: x64-linux-gcc-13-${{ hashFiles('vcpkg.json') }}
-          restore-keys: x64-linux-gcc-13-${{ hashFiles('vcpkg.json') }}
+          key: x64-linux-gcc-14-${{ hashFiles('vcpkg.json') }}
+          restore-keys: x64-linux-gcc-14-${{ hashFiles('vcpkg.json') }}
 
       - uses: aminya/setup-cpp@v1
         with:
-          compiler: gcc-13
+          compiler: gcc-14
           cmake: true
           ninja: true
           ccache: true
 
+<<<<<<< before updating
       - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5
+=======
+      - uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5
+>>>>>>> after updating
         with:
           python-version: 3.x
 
       - name: Install latest clang-tidy
         run: |
-          pip install clang-tidy==19.1.0
+          pip install clang-tidy==19.1.0.1
 
       - name: Configure CMake
         run: >
@@ -504,7 +547,6 @@ jobs:
   cppcheck:
     runs-on: ubuntu-24.04
     needs: [pre-commit]
-    timeout-minutes: 15
 
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
@@ -512,28 +554,40 @@ jobs:
           fetch-depth: 0
 
       - name: Cache
+<<<<<<< before updating
         uses: actions/cache@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4
+=======
+        uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf # v4
+>>>>>>> after updating
         with:
           path: |
             ~/vcpkg
             ~/.cache/vcpkg
-          key: x64-linux-gcc-13-${{ hashFiles('vcpkg.json') }}
-          restore-keys: x64-linux-gcc-13-${{ hashFiles('vcpkg.json') }}
+          key: x64-linux-gcc-14-${{ hashFiles('vcpkg.json') }}
+          restore-keys: x64-linux-gcc-14-${{ hashFiles('vcpkg.json') }}
 
       - uses: aminya/setup-cpp@v1
         with:
-          compiler: gcc-13
+          compiler: gcc-14
           cmake: true
           ninja: true
           ccache: true
 
+<<<<<<< before updating
       - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5
+=======
+      - uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5
+>>>>>>> after updating
         with:
           python-version: 3.x
 
       - name: Install latest cppcheck
         run: |
+<<<<<<< before updating
           pip install cppcheck==1.4.6
+=======
+          pip install cppcheck==1.4.7
+>>>>>>> after updating
 
       - name: Configure CMake
         run: >
@@ -553,7 +607,6 @@ jobs:
   check-docs:
     runs-on: ubuntu-24.04
     needs: [pre-commit]
-    timeout-minutes: 15
 
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
@@ -561,25 +614,33 @@ jobs:
           fetch-depth: 0
 
       - name: Cache
+<<<<<<< before updating
         uses: actions/cache@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4
+=======
+        uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf # v4
+>>>>>>> after updating
         with:
           path: |
             ~/vcpkg
             ~/.cache/pip
             ~/.cache/vcpkg
-          key: x64-linux-gcc-13-${{ hashFiles('vcpkg.json') }}
-          restore-keys: x64-linux-gcc-13-${{ hashFiles('vcpkg.json') }}
+          key: x64-linux-gcc-14-${{ hashFiles('vcpkg.json') }}
+          restore-keys: x64-linux-gcc-14-${{ hashFiles('vcpkg.json') }}
 
       - uses: aminya/setup-cpp@v1
         with:
-          compiler: gcc-13
+          compiler: gcc-14
           cmake: true
           ninja: true
           ccache: true
           doxygen: true
           graphviz: true
 
+<<<<<<< before updating
       - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5
+=======
+      - uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5
+>>>>>>> after updating
         with:
           python-version: 3.x
 
@@ -599,7 +660,6 @@ jobs:
   codecov:
     runs-on: ubuntu-24.04
     needs: [pre-commit]
-    timeout-minutes: 15
 
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
@@ -607,17 +667,21 @@ jobs:
           fetch-depth: 0
 
       - name: Cache
+<<<<<<< before updating
         uses: actions/cache@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4
+=======
+        uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf # v4
+>>>>>>> after updating
         with:
           path: |
             ~/vcpkg
             ~/.cache/vcpkg
-          key: x64-linux-gcc-13-${{ hashFiles('vcpkg.json') }}
-          restore-keys: x64-linux-gcc-13-${{ hashFiles('vcpkg.json') }}
+          key: x64-linux-gcc-14-${{ hashFiles('vcpkg.json') }}
+          restore-keys: x64-linux-gcc-14-${{ hashFiles('vcpkg.json') }}
 
       - uses: aminya/setup-cpp@v1
         with:
-          compiler: gcc-13
+          compiler: gcc-14
           cmake: true
           ninja: true
           ccache: true
@@ -625,7 +689,7 @@ jobs:
       - name: Prepare for lcov
         run: |
           sudo apt-get update; sudo apt-get install lcov -y
-          gcc_compiler=gcc-13
+          gcc_compiler=gcc-14
           gcov_version=${gcc_compiler##*-}
           sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-$gcov_version 100
 
@@ -646,12 +710,16 @@ jobs:
         run: cmake --build --preset=default --target ccov-all
 
       - name: Upload coverage report
+<<<<<<< before updating
         uses: codecov/codecov-action@b9fd7d16f6d7d1b5d2bec1a2887e65ceed900238 # v4.6.0
+=======
+        uses: codecov/codecov-action@13ce06bfc6bbe3ecf90edbbf1bc32fe5978ca1d3 # v5.3.1
+>>>>>>> after updating
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
           disable_search: true
-          file: ./out/build/default/code_coverage/coverage.info
+          files: ./out/build/default/code_coverage/coverage.info
           verbose: true
 
 
