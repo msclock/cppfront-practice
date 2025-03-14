@@ -50,23 +50,23 @@ jobs:
           fetch-depth: 0
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@aa578102511db1f4524ed59b8cc2bae4f6e88195 # v3.27.6
+        uses: github/codeql-action/init@b56ba49b26e50535fa1e7f7db0f4f7b4bf65d80d # v3.28.10
         with:
           languages: ${{ matrix.language }}
           config-file: ./.github/codeql-config.yml
 
       - name: Cache
-        uses: actions/cache@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4
+        uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf # v4
         with:
           path: |
             ~/vcpkg
             ~/.cache/vcpkg
-          key: x64-linux-gcc-13-${{ hashFiles('vcpkg.json') }}
-          restore-keys: x64-linux-gcc-13-${{ hashFiles('vcpkg.json') }}
+          key: x64-linux-gcc-14-${{ hashFiles('vcpkg.json') }}
+          restore-keys: x64-linux-gcc-14-${{ hashFiles('vcpkg.json') }}
 
       - uses: aminya/setup-cpp@v1
         with:
-          compiler: gcc-13
+          compiler: gcc-14
           cmake: true
           ninja: true
           ccache: true
@@ -87,4 +87,4 @@ jobs:
         run: cmake --build --preset=default --target all
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@aa578102511db1f4524ed59b8cc2bae4f6e88195 # v3.27.6
+        uses: github/codeql-action/analyze@b56ba49b26e50535fa1e7f7db0f4f7b4bf65d80d # v3.28.10
