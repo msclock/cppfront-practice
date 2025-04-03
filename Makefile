@@ -25,7 +25,7 @@ clean:
 
 # Install standalone tools
 prerequisites:
-	pipx install --force pre-commit==4.1.0
+	pipx install --force pre-commit==4.2.0
 	pipx install --force watchfiles==1.0.4
 
 ########################################################################################
