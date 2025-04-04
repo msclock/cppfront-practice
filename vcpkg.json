@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
   "name": "cppfront-practice",
   "description": "Practice based on cppfront",
-  "builtin-baseline": "db1ddd074bd51bf01baf4c4672b82de9680835ca",
+  "builtin-baseline": "9b75e789ece3f942159b8500584e35aafe3979ff",
   "homepage": "https://github.com/msclock/cppfront-practice",
   "dependencies": [
     "cppfront",
