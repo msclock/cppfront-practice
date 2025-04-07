@@ -2,7 +2,11 @@
   "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
   "name": "cppfront-practice",
   "description": "Practice based on cppfront",
+<<<<<<< before updating
   "builtin-baseline": "856505bb767458c99d8e3c3ed441f59a058d3687",
+=======
+  "builtin-baseline": "cd1099f42a3c2ee28dc68e3db3f6f88658982736",
+>>>>>>> after updating
   "homepage": "https://github.com/msclock/cppfront-practice",
   "dependencies": [
     "cppfront",
@@ -45,7 +49,11 @@
     "registries": [
       {
         "kind": "git",
+<<<<<<< before updating
         "baseline": "4a7f3c0787dc6f43569ddf94f965759b1b53e1a1",
+=======
+        "baseline": "82147f387552e0f31d5ca2c9370d9726789fa568",
+>>>>>>> after updating
         "repository": "https://github.com/msclock/cmake-registry",
         "packages": [
           "cmake-modules",
