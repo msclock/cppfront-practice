@@ -1,4 +1,4 @@
-_commit: v1.6.21
+_commit: v1.7.3
 _src_path: https://github.com/serious-scaffold/ss-cpp
 author_email: msclock@126.com
 author_name: l.feng
@@ -19,6 +19,7 @@ repo_host: github.com
 repo_name: cppfront-practice
 repo_namespace: msclock
 repo_platform: github
+unit_test: catch2
 use_cdash: false
 use_codecov: true
 use_codeql: true
