@@ -50,21 +50,13 @@ jobs:
           fetch-depth: 0
 
       - name: Initialize CodeQL
-<<<<<<< before updating
-        uses: github/codeql-action/init@fca7ace96b7d713c7035871441bd52efbe39e27e # v3.28.19
-=======
         uses: github/codeql-action/init@v3
->>>>>>> after updating
         with:
           languages: ${{ matrix.language }}
           config-file: ./.github/codeql-config.yml
 
       - name: Cache
-<<<<<<< before updating
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
-=======
         uses: actions/cache@v4
->>>>>>> after updating
         with:
           path: |
             ~/vcpkg
@@ -95,8 +87,4 @@ jobs:
         run: cmake --build --preset=default --target all
 
       - name: Perform CodeQL Analysis
-<<<<<<< before updating
-        uses: github/codeql-action/analyze@fca7ace96b7d713c7035871441bd52efbe39e27e # v3.28.19
-=======
         uses: github/codeql-action/analyze@v3
->>>>>>> after updating

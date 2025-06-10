@@ -24,11 +24,7 @@ jobs:
         with:
           fetch-depth: 0
 
-<<<<<<< before updating
-      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
-=======
       - uses: actions/setup-python@v5
->>>>>>> after updating
         with:
           python-version: 3.11
 
@@ -56,11 +52,7 @@ jobs:
           fetch-depth: 0
 
       - name: Cache
-<<<<<<< before updating
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
-=======
         uses: actions/cache@v4
->>>>>>> after updating
         with:
           path: |
             ~/vcpkg
@@ -137,11 +129,7 @@ jobs:
           fetch-depth: 0
 
       - name: Cache
-<<<<<<< before updating
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
-=======
         uses: actions/cache@v4
->>>>>>> after updating
         with:
           path: |
             ~/vcpkg
@@ -219,11 +207,7 @@ jobs:
           fetch-depth: 0
 
       - name: Cache
-<<<<<<< before updating
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
-=======
         uses: actions/cache@v4
->>>>>>> after updating
         with:
           path: |
             ~/vcpkg
@@ -288,11 +272,7 @@ jobs:
           fetch-depth: 0
 
       - name: Cache
-<<<<<<< before updating
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
-=======
         uses: actions/cache@v4
->>>>>>> after updating
         with:
           path: |
             ~/vcpkg
@@ -309,11 +289,7 @@ jobs:
           ninja: true
           ccache: true
 
-<<<<<<< before updating
-      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
-=======
       - uses: actions/setup-python@v5
->>>>>>> after updating
         with:
           python-version: 3.x
 
@@ -364,11 +340,7 @@ jobs:
           fetch-depth: 0
 
       - name: Cache
-<<<<<<< before updating
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
-=======
         uses: actions/cache@v4
->>>>>>> after updating
         with:
           path: |
             ~/vcpkg
@@ -415,11 +387,7 @@ jobs:
           fetch-depth: 0
 
       - name: Cache
-<<<<<<< before updating
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
-=======
         uses: actions/cache@v4
->>>>>>> after updating
         with:
           path: |
             ~/vcpkg
@@ -465,11 +433,7 @@ jobs:
 
       - name: Upload test results
         if: failure()
-<<<<<<< before updating
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-=======
         uses: actions/upload-artifact@v4
->>>>>>> after updating
         with:
           name: valgrind-results
           path: out/valgrind-results.tar.gz
@@ -484,11 +448,7 @@ jobs:
           fetch-depth: 0
 
       - name: Cache
-<<<<<<< before updating
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
-=======
         uses: actions/cache@v4
->>>>>>> after updating
         with:
           path: |
             ~/vcpkg
@@ -503,11 +463,7 @@ jobs:
           ninja: true
           ccache: true
 
-<<<<<<< before updating
-      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
-=======
       - uses: actions/setup-python@v5
->>>>>>> after updating
         with:
           python-version: 3.x
 
@@ -540,11 +496,7 @@ jobs:
           fetch-depth: 0
 
       - name: Cache
-<<<<<<< before updating
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
-=======
         uses: actions/cache@v4
->>>>>>> after updating
         with:
           path: |
             ~/vcpkg
@@ -559,11 +511,7 @@ jobs:
           ninja: true
           ccache: true
 
-<<<<<<< before updating
-      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
-=======
       - uses: actions/setup-python@v5
->>>>>>> after updating
         with:
           python-version: 3.x
 
@@ -596,11 +544,7 @@ jobs:
           fetch-depth: 0
 
       - name: Cache
-<<<<<<< before updating
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
-=======
         uses: actions/cache@v4
->>>>>>> after updating
         with:
           path: |
             ~/vcpkg
@@ -618,11 +562,7 @@ jobs:
           doxygen: true
           graphviz: true
 
-<<<<<<< before updating
-      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
-=======
       - uses: actions/setup-python@v5
->>>>>>> after updating
         with:
           python-version: 3.x
 
@@ -649,11 +589,7 @@ jobs:
           fetch-depth: 0
 
       - name: Cache
-<<<<<<< before updating
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
-=======
         uses: actions/cache@v4
->>>>>>> after updating
         with:
           path: |
             ~/vcpkg
@@ -692,11 +628,7 @@ jobs:
         run: cmake --build --preset=default --target ccov-all
 
       - name: Upload coverage report
-<<<<<<< before updating
-        uses: codecov/codecov-action@18283e04ce6e62d37312384ff67231eb8fd56d24 # v5.4.3
-=======
         uses: codecov/codecov-action@v5.4.2
->>>>>>> after updating
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
