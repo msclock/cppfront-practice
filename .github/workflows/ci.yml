@@ -20,15 +20,15 @@ jobs:
   pre-commit:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+      - uses: actions/setup-python@v5
         with:
           python-version: 3.11
 
-      - uses: pre-commit/action@2c7b3805fd2a0fd8c1884dcaebf91fc102a13ecd # v3.0.1
+      - uses: pre-commit/action@v3.0.1
         with:
           extra_args: --hook-stage manual --all-files
 
@@ -47,12 +47,12 @@ jobs:
     name: check • ${{ matrix.triplet }} • ${{ matrix.compiler }} • c++${{ matrix.std }} • ${{ matrix.build_type }}
 
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Cache
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
+        uses: actions/cache@v4
         with:
           path: |
             ~/vcpkg
@@ -124,12 +124,12 @@ jobs:
     name: check • ${{ matrix.triplet }} • ${{ matrix.compiler }} • c++${{ matrix.std }} • ${{ matrix.build_type }}
 
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Cache
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
+        uses: actions/cache@v4
         with:
           path: |
             ~/vcpkg
@@ -189,7 +189,7 @@ jobs:
 
 
   check-on-windows:
-    runs-on: windows-2022
+    runs-on: windows-2025
     needs: [pre-commit]
 
     strategy:
@@ -202,12 +202,12 @@ jobs:
     name: check • ${{ matrix.triplet }} • ${{ matrix.compiler }} • c++${{ matrix.std }} • ${{ matrix.build_type }}
 
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Cache
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
+        uses: actions/cache@v4
         with:
           path: |
             ~/vcpkg
@@ -254,7 +254,7 @@ jobs:
 
 
   check-mingw:
-    runs-on: windows-2022
+    runs-on: windows-2025
     needs: [pre-commit]
 
     strategy:
@@ -267,12 +267,12 @@ jobs:
     name: check • ${{ matrix.triplet }} • ${{ matrix.compiler }} • c++${{ matrix.std }} • ${{ matrix.build_type }}
 
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Cache
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
+        uses: actions/cache@v4
         with:
           path: |
             ~/vcpkg
@@ -289,7 +289,7 @@ jobs:
           ninja: true
           ccache: true
 
-      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+      - uses: actions/setup-python@v5
         with:
           python-version: 3.x
 
@@ -335,12 +335,12 @@ jobs:
     name: check • sanitizers • ${{ matrix.sanitizer }} • ${{ matrix.build_type }}
 
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Cache
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
+        uses: actions/cache@v4
         with:
           path: |
             ~/vcpkg
@@ -382,12 +382,12 @@ jobs:
     name: check • valgrind • ${{ matrix.build_type }}
 
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Cache
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
+        uses: actions/cache@v4
         with:
           path: |
             ~/vcpkg
@@ -433,7 +433,7 @@ jobs:
 
       - name: Upload test results
         if: failure()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@v4
         with:
           name: valgrind-results
           path: out/valgrind-results.tar.gz
@@ -443,12 +443,12 @@ jobs:
     needs: [pre-commit]
 
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Cache
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
+        uses: actions/cache@v4
         with:
           path: |
             ~/vcpkg
@@ -463,7 +463,7 @@ jobs:
           ninja: true
           ccache: true
 
-      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+      - uses: actions/setup-python@v5
         with:
           python-version: 3.x
 
@@ -491,12 +491,12 @@ jobs:
     needs: [pre-commit]
 
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Cache
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
+        uses: actions/cache@v4
         with:
           path: |
             ~/vcpkg
@@ -511,7 +511,7 @@ jobs:
           ninja: true
           ccache: true
 
-      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+      - uses: actions/setup-python@v5
         with:
           python-version: 3.x
 
@@ -539,12 +539,12 @@ jobs:
     needs: [pre-commit]
 
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Cache
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
+        uses: actions/cache@v4
         with:
           path: |
             ~/vcpkg
@@ -562,7 +562,7 @@ jobs:
           doxygen: true
           graphviz: true
 
-      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+      - uses: actions/setup-python@v5
         with:
           python-version: 3.x
 
@@ -584,12 +584,12 @@ jobs:
     needs: [pre-commit]
 
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Cache
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
+        uses: actions/cache@v4
         with:
           path: |
             ~/vcpkg
@@ -628,7 +628,7 @@ jobs:
         run: cmake --build --preset=default --target ccov-all
 
       - name: Upload coverage report
-        uses: codecov/codecov-action@18283e04ce6e62d37312384ff67231eb8fd56d24 # v5.4.3
+        uses: codecov/codecov-action@v5.4.2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
